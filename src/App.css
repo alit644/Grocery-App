@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.active {
+  width: 40px;
+  height: 40px;
+  background-color: #42b257;
+  cursor: pointer;
+  border-radius: 100%;
+  color: white;
+  margin-bottom: 30px;
+}
+.link-login{
+  text-decoration: underline;
+  color: blue;
+}
