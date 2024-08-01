@@ -16,6 +16,7 @@ import { SlHandbag } from "react-icons/sl";
 import { Link, NavLink } from "react-router-dom";
 import Cookies from "universal-cookie";
 import { useUser } from "../../Context/UserContext";
+import { useCart } from "../../Context/CartContext";
 const HeadBar = () => {
   const cookies = new Cookies();
   const token = cookies.get("token");
@@ -24,16 +25,27 @@ const HeadBar = () => {
   const { user } = useUser();
   const fullName = user?.firstName + " " + user?.lastName;
 
+  // cart items
+  const { cart } = useCart();
+
   return (
-    <Box as="header" p={3} bg={"white"} mb={4} position={"sticky"} top={0} zIndex={99}>
+    <Box
+      as="header"
+      p={3}
+      bg={"white"}
+      mb={4}
+      position={"sticky"}
+      top={0}
+      zIndex={99}
+    >
       <Stack
         direction={"row"}
         justifyContent={"space-between"}
         alignItems={"center"}
       >
         {/* logo */}
-        <Stack as={Link} to={"/"}  direction={"row"} alignItems={"center"}>
-          <Image  w={"45px"} h={"45px"} src={logo} />
+        <Stack as={Link} to={"/"} direction={"row"} alignItems={"center"}>
+          <Image w={"45px"} h={"45px"} src={logo} />
           <Text fontWeight={"600"}>Grocery</Text>
         </Stack>
         {/* search */}
@@ -51,8 +63,9 @@ const HeadBar = () => {
             />
           </InputGroup>
         </Box>
-        <Flex direction={"row"} gap={4} alignItems={"center"}>
+        <Flex   position={"relative"} direction={"row"} gap={4} alignItems={"center"}>
           <Stack
+        
             cursor={"pointer"}
             _hover={{ bg: "#7ec58b57" }}
             alignItems={"center"}
@@ -67,9 +80,19 @@ const HeadBar = () => {
           >
             <SlHandbag />
           </Stack>
+          <Box position={"absolute"} top={0} left={0} >
+            {cart.length > 0 && <Box bg={"red"} rounded={"full"} p={1.5} />}
+          </Box>
+
           {token !== undefined ? (
-            <Stack as={Link} to={"/profile"} cursor={"pointer"} direction={"row"} alignItems={"center"}>
-              <Avatar size="sm" name={fullName} bg="#C53330" color={'white'}/>
+            <Stack
+              as={Link}
+              to={"/profile"}
+              cursor={"pointer"}
+              direction={"row"}
+              alignItems={"center"}
+            >
+              <Avatar size="sm" name={fullName} bg="#C53330" color={"white"} />
               <Text display={{ base: "none", md: "block" }}>{fullName}</Text>
             </Stack>
           ) : (

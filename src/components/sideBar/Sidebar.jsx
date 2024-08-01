@@ -6,7 +6,10 @@ import { GoHome } from "react-icons/go";
 import { NavLink } from "react-router-dom";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { handelLogout } from "../../utils/LogoutFun";
+import Cookies from "universal-cookie";
 const Sidebar = () => {
+  const cookie = new Cookies();
+  const token = cookie.get("token");
   // nav items
   const navItems = [
     {
@@ -15,18 +18,16 @@ const Sidebar = () => {
       path: "/",
     },
     {
-      name: "Cart",
-      icon: LuShoppingCart,
-      path: "/cart",
-    },
-    {
       name: "Categories",
       icon: MdOutlineCategory,
       path: "/categories",
     },
+    {
+      name: "Cart",
+      icon: LuShoppingCart,
+      path: "/cart",
+    },
   ];
-
-
 
   // show items list
   const navItem = navItems.map((item) => {
@@ -70,20 +71,21 @@ const Sidebar = () => {
             {navItem}
           </Stack>
           {/* logout */}
-          <Stack
-            w={"40px"}
-            h={"40px"}
-            cursor={"pointer"}
-            rounded={"full"}
-            alignItems={"center"}
-            justifyContent={"center"}
-            _hover={{ bg: "#C53330", color: "white" }}
-            transition={"all .2s ease-in-out"}
-            onClick={handelLogout}
-          >
-
-            <RiLogoutCircleRLine size={24} />
-          </Stack>
+          {token && (
+            <Stack
+              w={"40px"}
+              h={"40px"}
+              cursor={"pointer"}
+              rounded={"full"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              _hover={{ bg: "#C53330", color: "white" }}
+              transition={"all .2s ease-in-out"}
+              onClick={handelLogout}
+            >
+              <RiLogoutCircleRLine size={24} />
+            </Stack>
+          )}
         </Stack>
       </Box>
     </Box>

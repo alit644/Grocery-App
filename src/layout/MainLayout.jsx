@@ -30,7 +30,7 @@ const MainLayout = () => {
             <Outlet />
           </Box>
           {/* footer */}
-          <Box mt={0} bg={"#181a1b"}>
+          <Box   h={{ base: "120px", md: "auto" }} mt={0} bg={"#181a1b"}>
             <Container
               maxW={"6xl"}
               py={4}

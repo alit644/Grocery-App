@@ -5,8 +5,11 @@ import { MdOutlineCategory } from "react-icons/md";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 import { handelLogout } from "../../utils/LogoutFun";
+import Cookies from "universal-cookie";
 
 const MobilNav = () => {
+  const cookie = new Cookies();
+  const token = cookie.get("token");
   // nav items
   const navItems = [
     {
@@ -15,14 +18,14 @@ const MobilNav = () => {
       path: "/",
     },
     {
-      name: "Cart",
-      icon: LuShoppingCart,
-      path: "/cart",
-    },
-    {
       name: "Categories",
       icon: MdOutlineCategory,
       path: "/categories",
+    },
+    {
+      name: "Cart",
+      icon: LuShoppingCart,
+      path: "/cart",
     },
   ];
 
@@ -36,7 +39,7 @@ const MobilNav = () => {
           cursor={"pointer"}
           alignItems={"center"}
           rounded={"full"}
-          color={'white'}
+          color={"white"}
           justifyContent={"center"}
           _hover={{ bg: "#42B257", color: "white" }}
           transition={"all .2s ease-in-out"}
@@ -50,37 +53,36 @@ const MobilNav = () => {
   return (
     <Box
       position={"fixed"}
-      bottom={-1}
-      left={0}
-      mx={'auto'}
-      w={"100%"}
+      bottom="16px" // تعديل المسافة من الأسفل
+      left="16px"  // تعديل المسافة من اليسار
+      right="16px" // تعديل المسافة من اليمين
+      mx="auto"
+      w="calc(100% - 32px)" // 
       h={"60px"}
       zIndex={10}
-      bg={"#252525"}
+      bg={"#1e2123"}
       p={2}
-      borderTopLeftRadius={"2xl"}
-      borderTopRightRadius={"2xl"}
+      rounded={"20px"}
       display={{ base: "block", md: "none" }}
     >
       <Stack direction={"row"} gap={4} justifyContent={"center"}>
-      
         {navItem}
-        <Stack
+        {token && (
+          <Stack
             w={"40px"}
             h={"40px"}
             cursor={"pointer"}
             rounded={"full"}
             alignItems={"center"}
             justifyContent={"center"}
-            color={'#C53330'}
+            color={"#C53330"}
             _hover={{ bg: "#C53330", color: "white" }}
             transition={"all .2s ease-in-out"}
             onClick={handelLogout}
-
           >
-
             <RiLogoutCircleRLine size={24} />
           </Stack>
+        )}
       </Stack>
     </Box>
   );

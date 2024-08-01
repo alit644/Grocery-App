@@ -1,6 +1,7 @@
 import { Box, Button, Heading, Image, Stack } from "@chakra-ui/react";
 import ImgOne from "../../assets/box-one.png"
 import ImgTwo from "../../assets/box-2.png"
+import { Link } from "react-router-dom";
 const ShopBy = () => {
   const towBox = [
     {
@@ -10,6 +11,7 @@ const ShopBy = () => {
       bgColor: "#FED8A1",
       image: ImgOne,
       btnColor: "red",
+      path: 'prdoucts/2'
     },
     {
       headingTxt: `Make Your
@@ -18,6 +20,8 @@ const ShopBy = () => {
       bgColor: "#CAF2CB",
       image: ImgTwo,
       btnColor: "green",
+      path: 'products'
+
     },
   ];
 
@@ -31,13 +35,14 @@ const ShopBy = () => {
         p={6}
         rounded={"35px"}
         bg={item.bgColor}
+        
       >
         {/* info */}
         <Box>
           <Heading mb={"6"} color={"#064B4E"} size={{ base: "md", md: "lg" }}>
             {item.headingTxt}
           </Heading>
-          <Button colorScheme={item.btnColor} color={'white'} >Shop Now</Button>
+          <Button as={Link} to={item.path} colorScheme={item.btnColor} color={'white'} >Shop Now</Button>
         </Box>
         <Box>
           <Image w={{ base: "200px", md: "300px" }}  alt={"image"} src={item.image} />

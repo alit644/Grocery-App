@@ -58,7 +58,7 @@ export default function SignupPage() {
   return (
     <>
       <HeadBar />
-      <Box h={"100vh"} bg={"#F1EFED"} p={5}>
+      <Box h={{ base: "auto", md: "100vh" }} bg={"#F1EFED"} p={5}>
         <Stack
           h={"100%"}
           direction={{ base: "column", md: "row" }}

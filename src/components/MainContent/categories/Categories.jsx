@@ -74,11 +74,18 @@ const Categories = () => {
           modules={[Navigation, Pagination]}
           spaceBetween={20}
           slidesPerView={4}
-          breakpoints={{
-            340: {
-              slidesPerView: 6,
-            },
-          }}
+        breakpoints={{
+    // شاشات صغيرة جدًا
+  
+    // شاشات متوسطة
+    900: {
+      slidesPerView: 6, // عرض ثلاث شرائح
+    },
+    // شاشات كبيرة
+    1200: {
+      slidesPerView: 4, // عرض خمس شرائح
+    },
+  }}
           navigation={{
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
