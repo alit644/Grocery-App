@@ -51,7 +51,7 @@ const Sidebar = () => {
   });
 
   return (
-    <Box>
+    <Box h={"100vh"}>
       {/* sideBar desktop */}
       <Box
         position={"fixed"}
