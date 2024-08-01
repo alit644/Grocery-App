@@ -64,7 +64,7 @@ const Sidebar = () => {
         <Stack h={"100%"} direction={"column"} alignItems={"center"}>
           {/* logo */}
           <Box mt={1}>
-            <Image w={"40px"} src={logo} />
+            <Image w={"40px"} src={logo} alt="logo"/>
           </Box>
           {/* nav items */}
           <Stack alignItems={"center"} justifyContent={"center"} flex={1}>

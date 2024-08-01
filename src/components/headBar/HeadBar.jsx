@@ -45,7 +45,7 @@ const HeadBar = () => {
       >
         {/* logo */}
         <Stack as={Link} to={"/"} direction={"row"} alignItems={"center"}>
-          <Image w={"45px"} h={"45px"} src={logo} />
+          <Image w={"45px"} h={"45px"} src={logo} alt="logo"/>
           <Text fontWeight={"600"}>Grocery</Text>
         </Stack>
         {/* search */}

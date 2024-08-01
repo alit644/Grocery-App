@@ -25,7 +25,7 @@ const CategoryBox = ({item : {image, title , id}}) => {
       <Text textAlign={"center"} fontWeight={"600"}>
       {title}
       </Text>
-      <Image w={"100px"} h={"100px"} src={image} />
+      <Image w={"100px"} h={"100px"} src={image} alt="category image"/>
     </Stack>
   );
 };
